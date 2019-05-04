@@ -12,10 +12,20 @@ class MainController
 
     public function analysisPage(\Slim\Slim $app, \Twig_Environment $twig)
     {
-        $service = new AnalysisService();
-        $service->perform();
+        $errors = [];
+        $transactions = [];
+        try {
+            $service = new AnalysisService();
+            $transactions = $service->perform();
+        } catch (\Exception $e) {
+            $errors[] = $e->getMessage();
+        }
 
-        echo $twig->render('analysis.html', array());
+
+        echo $twig->render('analysis.html', array(
+            "errors" => $errors,
+            "transactions" => json_decode(json_encode($transactions), true),
+        ));
     }
 
 }

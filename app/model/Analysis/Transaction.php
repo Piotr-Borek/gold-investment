@@ -1,7 +1,7 @@
 <?php
 namespace GoldInvestment\Model\Analysis;
 
-class Transaction
+class Transaction implements \JsonSerializable
 {
     /**
      * @var  \DateTime
@@ -40,4 +40,14 @@ class Transaction
     {
         return $this->category;
     }
+
+    public function jsonSerialize()
+    {
+        return [
+            "day" => $this->day->format("Y-m-d"),
+            "category" => $this->getCategory(),
+        ];
+    }
+
+
 }

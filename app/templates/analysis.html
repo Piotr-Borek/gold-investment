@@ -6,5 +6,23 @@
 
 <p>
     Analysis...
-
 </p>
+
+{% if errors %}
+<h2>Errors:</h2>
+<ul>
+{% for e in errors %}
+    <li>{{ e|e }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if transactions %}
+<h2>Suggested transactions:</h2>
+<ul>
+    {% for t in transactions %}
+    <li>{{ t.day }} {{ t.category }}</li>
+    {% endfor %}
+</ul>
+
+{% endif %}
