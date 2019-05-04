@@ -19,10 +19,14 @@
 
 {% if transactions %}
 <h2>Suggested transactions:</h2>
-<ul>
+<table>
     {% for t in transactions %}
-    <li>{{ t.day }} {{ t.category }}</li>
+    <tr>
+        <td>{{ t.day }}</td>
+        <td>{{ t.category }}</td>
+        <td style="text-align: right;">{{ t.price /100 | number_format(2)}}</td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 
 {% endif %}

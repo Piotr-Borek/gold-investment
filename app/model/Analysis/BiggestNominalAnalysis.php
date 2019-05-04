@@ -32,8 +32,8 @@ class BiggestNominalAnalysis implements AnalysisInterface
         }
 
         if ($this->currentBiggestProfit > 0) {
-            $this->transactions[] = new Transaction($this->currentDayBuy->getDate(), "BUY");
-            $this->transactions[] = new Transaction($this->currentDaySell->getDate(), "SELL");
+            $this->transactions[] = new Transaction($this->currentDayBuy->getDate(), "BUY", $this->currentDayBuy->getPrice());
+            $this->transactions[] = new Transaction($this->currentDaySell->getDate(), "SELL", $this->currentDaySell->getPrice());
         }
     }
 

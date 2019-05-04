@@ -15,14 +15,20 @@ class Transaction implements \JsonSerializable
     private $category;
 
     /**
+     * @var int
+     */
+    private $price;
+
+    /**
      * Transaction constructor.
      * @param \DateTime $day
      * @param $category
      */
-    public function __construct(\DateTime $day, $category)
+    public function __construct(\DateTime $day, $category, $price)
     {
         $this->day = $day;
         $this->category = $category;
+        $this->price = $price;
     }
 
     /**
@@ -46,6 +52,7 @@ class Transaction implements \JsonSerializable
         return [
             "day" => $this->day->format("Y-m-d"),
             "category" => $this->getCategory(),
+            "price" => $this->price,
         ];
     }
 
