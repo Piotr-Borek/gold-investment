@@ -1,0 +1,5 @@
+/vendor
+/logs/*
+/templates-cache/*
+/composer.phar
+.idea

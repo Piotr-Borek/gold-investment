@@ -1,0 +1,12 @@
+{
+  "require": {
+    "slim/slim": "~2.0",
+    "twig/twig": "~1.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "GoldInvestment\\": "app/"
+    }
+  }
+}
