@@ -14,6 +14,7 @@ class AnalysisService
             error_log($e);
             throw new \Exception("Wystąpił problem z pozyskaniem danych z NBP");
         }
+
     }
 
 }
