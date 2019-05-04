@@ -2,7 +2,7 @@
 namespace GoldInvestment\Model;
 
 use GoldInvestment\Model\Analysis\BiggestNominalAnalysis;
-use GoldInvestment\Model\GoldPrices\DayDataRepository;
+use GoldInvestment\Model\GoldPrices\PeriodRepository;
 
 class AnalysisService
 {
@@ -13,8 +13,12 @@ class AnalysisService
     public function perform()
     {
         try {
-            $repo = new DayDataRepository();
-            $os = $repo->get(new \DateTime('2019-01-01'), new \DateTime('2019-04-01'));
+            $now = new \DateTime();
+            $startTime = clone($now);
+            $startTime->sub(\DateInterval::createFromDateString('5 years'));
+
+            $repo = new PeriodRepository();
+            $os = $repo->get($startTime, $now);
         } catch (\Exception $e) {
             error_log($e);
             throw new \Exception("Problem with getting data from NBP.");
