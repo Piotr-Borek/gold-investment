@@ -1,16 +1,18 @@
 <?php
 namespace GoldInvestment\Model;
 
+use GoldInvestment\Model\Analysis\AnalysisInterface;
 use GoldInvestment\Model\Analysis\BiggestNominalAnalysis;
 use GoldInvestment\Model\GoldPrices\PeriodRepository;
 
 class AnalysisService
 {
     /**
+     * @param AnalysisInterface $analysis
      * @return Analysis\Transaction[]
      * @throws \Exception
      */
-    public function perform()
+    public function perform(AnalysisInterface $analysis)
     {
         try {
             $now = new \DateTime();
@@ -25,7 +27,6 @@ class AnalysisService
         }
 
         try {
-            $analysis = new BiggestNominalAnalysis();
             $analysis->setDayData($os);
             $analysis->process();
 

@@ -1,7 +1,10 @@
 <?php
 namespace GoldInvestment\Controllers;
 
+use GoldInvestment\Model\Analysis\BiggestNominalAnalysis;
+use GoldInvestment\Model\AnalysisMethodService;
 use GoldInvestment\Model\AnalysisService;
+use GoldInvestment\Tests\BiggestNominalAnalysisTest;
 
 class MainController
 {
@@ -15,11 +18,14 @@ class MainController
         $errors = [];
         $transactions = [];
         try {
+            $analysis = AnalysisMethodService::getAnalysis(!empty($_GET["method"]) ? $_GET["method"] : null);
             $service = new AnalysisService();
-            $transactions = $service->perform();
+            $transactions = $service->perform($analysis);
         } catch (\Exception $e) {
             $errors[] = $e->getMessage();
         }
+
+
 
 
         echo $twig->render('analysis.html', array(
