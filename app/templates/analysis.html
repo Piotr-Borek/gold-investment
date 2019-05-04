@@ -1,32 +1,39 @@
-<h1>Gold Investment - analysis</h1>
+<html>
+    {% include 'head.html' %}
 
-<p>
-    <a href="/">Back to home</a>
-</p>
+    <body>
+        <div class="container">
 
-<p>
-    Analysis...
-</p>
+            <h1>Gold Investment - analysis</h1>
 
-{% if errors %}
-<h2>Errors:</h2>
-<ul>
-{% for e in errors %}
-    <li>{{ e|e }}</li>
-{% endfor %}
-</ul>
-{% endif %}
+            <p>
+                <a href="/">Back to home</a>
+            </p>
 
-{% if transactions %}
-<h2>Suggested transactions:</h2>
-<table>
-    {% for t in transactions %}
-    <tr>
-        <td>{{ t.day }}</td>
-        <td>{{ t.category }}</td>
-        <td style="text-align: right;">{{ t.price /100 | number_format(2)}}</td>
-    </tr>
-    {% endfor %}
-</table>
+            {% if errors %}
+            <h2>Errors:</h2>
+            <ul>
+            {% for e in errors %}
+                <li>{{ e|e }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
 
-{% endif %}
+            {% if transactions %}
+            <h2>Suggested transactions:</h2>
+            <table class="table">
+                {% for t in transactions %}
+                <tr>
+                    <td>{{ t.day }}</td>
+                    <td>{{ t.category }}</td>
+                    <td style="text-align: right;">{{ t.price /100 | number_format(2)}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            {% endif %}
+        </div>
+    </body>
+
+
+</html>
