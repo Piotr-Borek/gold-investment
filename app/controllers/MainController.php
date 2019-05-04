@@ -8,4 +8,9 @@ class MainController
         echo $twig->render('main.html', array());
     }
 
+    public function analysisPage(\Slim\Slim $app, \Twig_Environment $twig)
+    {
+        echo $twig->render('analysis.html', array());
+    }
+
 }

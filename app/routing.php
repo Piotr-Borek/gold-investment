@@ -9,5 +9,9 @@ function routing(\Slim\Slim $app, \Twig_Environment $twig)
         $c = new MainController();
         $c->mainPage($app, $twig);
     });
+    $app->get('/analysis/', function () use ($app, $twig) {
+        $c = new MainController();
+        $c->analysisPage($app, $twig);
+    });
 }
 
