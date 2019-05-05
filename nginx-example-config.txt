@@ -1,0 +1,23 @@
+server {
+        listen          127.0.0.1:80;
+        server_name     gold-investment.localhost;
+        root    "c:/winnmp/www/gold-investment/public";
+
+        ## Access Restrictions
+        allow           127.0.0.1;
+        deny            all;
+
+        autoindex on;
+
+        location ~ \.php$ {
+                try_files $uri =404;
+                include         nginx.fastcgi.conf;
+                include         nginx.redis.conf;
+                fastcgi_pass    php_farm;
+                fastcgi_hide_header X-Powered-By;
+        }
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+}

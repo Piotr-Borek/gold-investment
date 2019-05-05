@@ -1,10 +1,8 @@
 <?php
 namespace GoldInvestment\Controllers;
 
-use GoldInvestment\Model\Analysis\BiggestNominalAnalysis;
 use GoldInvestment\Model\AnalysisMethodService;
 use GoldInvestment\Model\AnalysisService;
-use GoldInvestment\Tests\BiggestNominalAnalysisTest;
 
 class MainController
 {
